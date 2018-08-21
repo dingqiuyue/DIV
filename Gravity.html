@@ -15,7 +15,7 @@
 <body>
     <div class="block"></div>
     <script type="text/javascript">
-        var currhandle = 0;//判断操作是否完成
+        // var currhandle = 0;//判断操作是否完成
         if (window.DeviceMotionEvent) {
             var speed = 15;//加速度
             var x = y = z = lastX = lastY = lastZ = 0;
@@ -25,10 +25,10 @@
                 y = acceleration.y;
                 z = acceleration.z;
                 if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
-                    if (currhandle === 0) {
+                    // if (currhandle === 0) {
                         setbegin();//摇一摇事件触发
-                        currhandle = 1;
-                    }
+                        // currhandle = 1;
+                    // }
                 }
             }, false);
         } else {
@@ -37,7 +37,7 @@
         var setbegin = function () {//开始操作
             var color = new Array('#ff9', '#ff0', '#f00', '#000', '#00f', '#0ff');
             document.getElementsByClassName("block")[0].style.backgroundColor = color[Math.round(Math.random() * 10) % 6];
-            currhandle = 0;
+            // currhandle = 0;
         }
     </script>
 
