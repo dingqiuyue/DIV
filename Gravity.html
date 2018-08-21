@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <title>重力感应</title>
     <style>
-    .block{
-        width: 5rem;
-        height: 5rem;
-    }
+        .block {
+            width: 10rem;
+            height: 10rem;
+        }
     </style>
 </head>
 
@@ -26,10 +26,22 @@
                 z = acceleration.z;
                 if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
                     // if (currhandle === 0) {
-                        setbegin();//摇一摇事件触发
-                        // currhandle = 1;
+                    setbegin();//摇一摇事件触发
+                    // currhandle = 1;
                     // }
                 }
+                //手机左右倾斜
+                var ax = e.accelerationIncludingGravity.x * 5;
+                if (ax > 14) { //move right on device
+                    document.getElementsByClassName("block")[0].innerHTML="right";
+                }
+                if (ax < -14 && status != 1) { //move left on device   
+                    document.getElementsByClassName("block")[0].innerHTML="left";
+                }
+                if (ax > -14 && ax < 14 && status != 3) { //device held steady
+                    document.getElementsByClassName("block")[0].innerHTML="steady";
+                }
+
             }, false);
         } else {
             alert("您的设备不支持重力感应事件！");
